@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
+import * as cors from 'cors';
 
 dotenv.config();
 
@@ -8,11 +9,12 @@ import {AppDataSource} from './data-source';
 // import {User} from './entity/user.entity';
 import {userController} from './controller/user.controller';
 
-const PORT = 3000;
+const PORT = 5000;
 
 AppDataSource.initialize()
   .then(async () => {
     const app = express();
+    app.use(cors());
     app.use(bodyParser.json());
 
     app.use('/api', userController.routes);
