@@ -8,6 +8,7 @@ dotenv.config();
 import {AppDataSource} from './data-source';
 import {User} from './entity/user.entity';
 import {userController} from './controller/user.controller';
+import {movieController} from './controller/movie.controller';
 
 const PORT = 5000;
 
@@ -18,6 +19,7 @@ AppDataSource.initialize()
     app.use(bodyParser.json());
 
     app.use('/api', userController.routes);
+    app.use('/api', movieController.routes);
 
     app.listen(PORT, () => console.log(`Express server has started on port ${PORT}`));
 
