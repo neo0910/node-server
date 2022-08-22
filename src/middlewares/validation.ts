@@ -1,7 +1,7 @@
 import {ClassType, transformAndValidate} from 'class-transformer-validator';
-import {get} from 'lodash';
 import {NextFunction, Response, Request} from 'express';
 import {StatusCodes} from 'http-status-codes';
+import get = require('lodash.get');
 
 const getValidationHandler = (key: 'query' | 'params' | 'body') => {
   return <T extends object>(classType: ClassType<T>) => {
